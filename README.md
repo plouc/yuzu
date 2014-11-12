@@ -1,6 +1,8 @@
 YUZU
 ====
 
+Yuzu is a tasty CMS based on Neo4j / koa / reactjs.
+
 Installation
 ------------
 
