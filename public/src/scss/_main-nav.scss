@@ -1,0 +1,24 @@
+.main-nav {
+  @extend .page-container;
+  position: fixed;
+  top: 0;
+  background-color: #4881a3;
+  color: #fff;
+  &__wrapper {
+    @extend .page-container__wrapper;
+  }
+  a {
+    font-family: Montserrat, sans-serif;
+    text-decoration: none;
+    color: inherit;
+    text-transform: uppercase;
+    font-size: 14px;
+    &:hover {
+      background-color: #4f97ba;
+    }
+  }
+  &__item {
+    display: inline-block;
+    padding: 7px 9px;
+  }
+}

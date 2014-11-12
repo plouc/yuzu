@@ -1,0 +1,39 @@
+/*  BREADCRUMBS
+---------------------------------------------------*/
+
+/* Breadcrumbs
+
+    <div class="breadcrumbs">
+        <a href="">home</a>
+        <i className="fa fa-angle-right" /> <a href="">page</a>
+        <i className="fa fa-angle-right" /> <span>edit</span>
+    </div> */
+
+.breadcrumbs {
+  @extend .page-container;
+  background-color: #eee;
+  &__wrapper {
+    @extend .page-container__wrapper;
+  }
+
+  padding: 7px 0;
+
+  font-size: 13px;
+  margin-bottom: 10px;
+  a {
+    color: #4881a3;
+    display: inline-block;
+    text-decoration: none;
+    border-bottom: 1px dotted #4881a3;
+    &:hover {
+      border-bottom-style: solid;
+    }
+  }
+  > span {
+    color: #777;
+  }
+  .fa {
+    color: #4881a3;
+    margin: 0 7px;
+  }
+}

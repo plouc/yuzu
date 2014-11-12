@@ -1,0 +1,20 @@
+// text
+$text-color-base:      #000000;
+$text-color:           lighten($text-color-base, 13%);
+$text-color-secondary: lighten($text-color-base, 46%);
+$text-color-hint:      lighten($text-color-base, 74%);
+$text-color-divider:   lighten($text-color-base, 88%);
+
+$action-color:     #4881a3;
+$action-color-rev: #b2d5f1;
+
+$ok-color:         #569378;
+$ok-color-rev:     #b0f2c9;
+
+$warn-color:       #d69736;
+$warn-color-rev:   #f4ca78;
+
+$danger-color:     #e46248;
+$danger-color-rev: #ff7f68;
+
+$head-bg: #263951;

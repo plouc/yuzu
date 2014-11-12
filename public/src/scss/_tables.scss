@@ -1,0 +1,86 @@
+/*  TABLES
+---------------------------------------------------*/
+
+/* Tables
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>name</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>ID</td>
+                <td>name</td>
+                <td>actions</td>
+            </tr>
+            <tr>
+                <td>ID</td>
+                <td>name</td>
+                <td>actions</td>
+            </tr>
+            <tr>
+                <td>ID</td>
+                <td>name</td>
+                <td>actions</td>
+            </tr>
+            <tr>
+                <td>ID</td>
+                <td>name</td>
+                <td>actions</td>
+            </tr>
+            <tr>
+                <td>ID</td>
+                <td>name</td>
+                <td>actions</td>
+            </tr>
+        </tbody>
+    </table> */
+
+.table {
+  cellspacing: 0;
+  border-collapse: collapse;
+
+  width: 100%;
+
+  font-size: 14px;
+
+  td {
+    padding: 5px 10px;
+  }
+  th {
+    padding: 7px 10px;
+  }
+  th {
+    background-color: #4881a3;
+    color: #fff;
+    text-align: left;
+    font-weight: 400;
+    font-size: 12px;
+    font-family: Montserrat, sans-serif;
+    text-transform: uppercase;
+  }
+  tbody {
+    tr:nth-child(even) {
+      background-color: #fff;
+      .cell__id {
+        background-color: #eee;
+      }
+    }
+    tr:nth-child(odd) {
+      background-color: #eee;
+      .cell__id {
+        background-color: #ddd;
+      }
+    }
+    tr:hover {
+      background-color: #ddd;
+      .cell__id {
+        background-color: #ccc;
+      }
+    }
+  }
+}

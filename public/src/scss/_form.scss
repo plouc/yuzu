@@ -1,0 +1,173 @@
+/*  FORMS
+---------------------------------------------------*/
+
+/* Micro groups
+
+    <div style="text-align: center; padding: 20px;">
+        <div class="form__micro-group">
+            <input class="form__micro-group__control" type="text" id="name" />
+            <label class="form__micro-group__label" for="name">Name</label>
+        </div>
+        <div class="form__micro-group">
+            <input class="form__micro-group__control :focus" type="text" id="name" value="non e" />
+            <label class="form__micro-group__label" for="name">Name</label>
+        </div>
+        <div class="form__micro-group _is-filled">
+            <input class="form__micro-group__control" type="text" id="name" value="non empty value" />
+            <label class="form__micro-group__label" for="name">Name</label>
+        </div>
+    </div>
+
+    <div style="text-align: center; padding: 20px;" class="blue-bg">
+        <div class="form__micro-group reverse">
+            <input class="form__micro-group__control" type="text" id="name" />
+            <label class="form__micro-group__label" for="name">Name</label>
+        </div>
+        <div class="form__micro-group reverse">
+            <input class="form__micro-group__control :focus" type="text" id="name" value="non e" />
+            <label class="form__micro-group__label" for="name">Name</label>
+        </div>
+        <div class="form__micro-group _is-filled reverse">
+            <input class="form__micro-group__control" type="text" id="name" value="non empty value" />
+            <label class="form__micro-group__label" for="name">Name</label>
+        </div>
+    </div> */
+
+
+.form {
+  &__group {
+    margin-bottom: 9px;
+    width: 100%;
+  }
+  &__label {
+    display: inline-block;
+    width: 30%;
+    font-size: 14px;
+  }
+  &__actions {
+    text-align: center;
+    margin-top: 15px;
+  }
+  &__control {
+    &--text {
+      width: 60%;
+      border: none;
+      border-bottom: 1px solid #2d4a6f;
+      padding: 7px 0;
+      font-size: 14px;
+      background-color: transparent;
+      &:focus {
+        outline: none;
+      }
+    }
+  }
+
+  &--website {
+    overflow: hidden;
+    background-color: #4881a3;
+    color: #fff;
+    margin-bottom: 20px;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.7) inset;
+    h3 {
+      text-align: center;
+      margin-top: 0;
+    }
+    .page-container__wrapper {
+      padding: 20px 0 15px 0;
+      max-width: 500px;
+    }
+    &._is-hidden {
+      display: none;
+    }
+  }
+
+  &__micro-group {
+    margin-top: 20px;
+    position: relative;
+    display: inline-block;
+    &__label {
+      position: absolute;
+      padding: 7px 0 0 0;
+      top:  0;
+      left: 0;
+      color: #999;
+      transition: -webkit-transform 0.2s cubic-bezier(.12,.83,.65,.91);
+      -webkit-transform-origin: 0% 0%;
+    }
+    &__control {
+      outline: none;
+      border: none;
+      border-bottom: 1px solid #2d4a6f;
+      padding: 7px 0;
+      font-size: 14px;
+      background-color: transparent;
+    }
+
+    &._is-filled .form__micro-group__label,
+    &__control:focus + .form__micro-group__label {
+      font-size: 11px;
+      -webkit-transform: translate(0, -18px);
+      font-weight: 700;
+    }
+    &.reverse .form__micro-group__label {
+      color: #aed1ea;
+    }
+    &.reverse._is-filled .form__micro-group__label {
+      color: #2f3e5e;
+    }
+    &.reverse &__control:focus + .form__micro-group__label {
+      color: #fff;
+    }
+
+    &--full {
+      width: 100%;
+      .form__micro-group__label {
+        width: 100%;
+      }
+      .form__micro-group__control {
+        width: 100%;
+      }
+    }
+    &.reverse {
+      .form__micro-group__control {
+        width: 100%;
+        border-bottom-color: #b9ddf6;
+        color: #fff;
+        &:focus {
+          border-bottom-color: #fff;
+        }
+      }
+    }
+  }
+}
+
+.website-form-enter,
+.website-form-enter .page-container__wrapper {
+  transition: all 0.4s cubic-bezier(.12,.83,.65,.91);
+}
+.website-form-leave,
+.website-form-leave .page-container__wrapper {
+  transition: all 0.2s cubic-bezier(.12,.83,.65,.91);
+}
+
+.website-form-enter,
+.website-form-leave.website-form-leave-active {
+  opacity: 0.99;
+}
+.website-form-leave,
+.website-form-enter.website-form-enter-active {
+  opacity: 1;
+}
+
+.website-form-enter .page-container__wrapper,
+.website-form-leave.website-form-leave-active .page-container__wrapper {
+  opacity: 0.01;
+  -webkit-transform: scale(0.9) translate(0, 20px);
+  -webkit-transform-origin: 50% 100%;
+}
+.website-form-leave .page-container__wrapper,
+.website-form-enter.website-form-enter-active .page-container__wrapper {
+  opacity: 1;
+  -webkit-transform: scale(1) translate(0, 0);
+  -webkit-transform-origin: 50% 100%;
+}

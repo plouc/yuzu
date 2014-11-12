@@ -1,0 +1,83 @@
+@import "mixins";
+
+@import "colors";
+@import "fonts";
+@import "sizes";
+
+$max-width-desktop: 1120px;
+$max-width-tablet:  740px;
+
+.page-container {
+  width: 100%;
+  &__wrapper {
+    width: $max-width-desktop;
+    margin: auto;
+  }
+}
+
+.blue-bg {
+  background-color: $action-color;
+  padding: 10px;
+}
+
+@media screen and (max-width: 1159px) {
+  .page-container__wrapper {
+    width: $max-width-tablet;
+  }
+}
+
+@import "form";
+@import "tables";
+@import "main-nav";
+@import "breadcrumbs";
+@import "buttons";
+@import "page-tree";
+
+
+* {
+  -webkit-box-sizing: border-box;
+     -moz-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+h1,h2,h3,h4,h5,h6 {
+  font-weight: 400;
+  font-family: Montserrat, sans-serif;
+  text-transform: uppercase;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+html body {
+  background-color: $head-bg;
+  background-color: #fff;
+  color: $text-color;
+  -webkit-font-smoothing: antialiased;
+  -webkit-text-size-adjust: 100%;
+  text-rendering: optimizeLegibility;
+  font-family: 'roboto-reg',sans-serif;
+  font-size:   1em;
+  line-height: 1em;
+}
+
+body {
+  margin:  42px 0 0 0;
+  padding: 0;
+}
+
+.page-toolbar {
+  margin: 10px 0;
+}
+
+
+.page-title {
+  color: #2e5877;
+  font-size: 24px;
+  font-family: Montserrat, sans-serif;
+  margin: 15px auto;
+  text-transform: uppercase;
+  @extend .page-container__wrapper;
+}

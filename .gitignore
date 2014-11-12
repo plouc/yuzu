@@ -1,5 +1,7 @@
 .sass-cache
 *.log
 node_modules
-public/vendor/*
 neo4j
+public/vendor/*
+public/js/*
+public/css/*

@@ -1,0 +1,126 @@
+/*  BUTTONS
+---------------------------------------------------*/
+
+/* Button
+
+    <div style="text-align: center; padding: 10px;">
+        <a href="" class="button">As link</a>
+        <input value="As input" type="button" class="button" />
+        <button class="button button">As button</button>
+        <button class="button button :hover">hover</button>
+    </div>
+    <div style="text-align: center; padding: 10px;">
+      <a href="" class="button button--ok">As link</a>
+      <input value="As input" type="button" class="button button--ok" />
+      <button class="button button--ok">As button</button>
+      <button class="button button--ok :hover">hover</button>
+    </div>
+    <div style="text-align: center; padding: 10px;">
+        <a href="" class="button button--warn">As link</a>
+        <input value="As input" type="button" class="button button--warn" />
+        <button class="button button--warn">As button</button>
+        <button class="button button--warn :hover">hover</button>
+    </div>
+    <div style="text-align: center; padding: 10px;">
+        <a href="" class="button button--danger">As link</a>
+        <input value="As input" type="button" class="button button--danger" />
+        <button class="button button--danger">As button</button>
+        <button class="button button--danger :hover">hover</button>
+    </div>
+
+    <div style="text-align: center;" class="blue-bg">
+        <a href="" class="button reverse">As link</a>
+        <input value="As input" type="button" class="button reverse" />
+        <button class="button reverse">As button</button>
+        <button class="button reverse :hover">hover</button>
+    </div>
+    <div style="text-align: center;" class="blue-bg">
+        <a href="" class="button button--ok reverse">As link</a>
+        <input value="As input" type="button" class="button button--ok reverse" />
+        <button class="button button--ok reverse">As button</button>
+        <button class="button button--ok reverse :hover">hover</button>
+    </div>
+    <div style="text-align: center;" class="blue-bg">
+        <a href="" class="button button--warn reverse">As link</a>
+        <input value="As input" type="button" class="button button--warn reverse" />
+        <button class="button button--warn reverse">As button</button>
+        <button class="button button--warn reverse :hover">hover</button>
+    </div>
+    <div style="text-align: center;" class="blue-bg">
+        <a href="" class="button button--danger reverse">As link</a>
+        <input value="As input" type="button" class="button button--danger reverse" />
+        <button class="button button--danger reverse">As button</button>
+        <button class="button button--danger reverse :hover">hover</button>
+    </div> */
+
+@mixin button($suffix, $color, $reverseColor) {
+  $selector: ".button";
+  @if $suffix {
+    $selector: ".button--#{$suffix}";
+  }
+
+  #{$selector} {
+    border-color: $color;
+    color:        $color;
+    .fa {
+      color: $color;
+    }
+    &:hover {
+      background-color: $color;
+      color:       #fff;
+      .fa {
+        color: #fff;
+      }
+    }
+
+    &.reverse {
+      border-color: $reverseColor;
+      color:        $reverseColor;
+      .fa {
+        color: $reverseColor;
+      }
+      &:hover {
+        background-color: $reverseColor;
+        color:       #4881a3;
+        .fa { color: #4881a3; }
+      }
+    }
+  }
+}
+
+.button {
+  font-family: "Montserrat", sans-serif;
+  display: inline-block;
+  text-decoration: none;
+  text-transform: uppercase;
+  color: inherit;
+  padding: 6px 9px;
+  background-color: transparent;
+  font-size: 12px;
+  cursor: pointer;
+  border: 2px solid #000;
+  font-weight: normal;
+  vertical-align: middle;
+  margin-bottom: 0;
+  line-height: 1em;
+  + .button {
+    margin-left: 7px;
+  }
+  .fa {
+    margin-right: 5px;
+    margin-left: -2px;
+  }
+  &--m {
+    font-size: 11px;
+    padding: 3px 7px;
+    border-width: 1px;
+    .fa {
+      margin-right: 1px;
+    }
+  }
+}
+
+@include button(false,  $action-color, $action-color-rev);
+@include button(ok,     $ok-color,     $ok-color-rev);
+@include button(warn,   $warn-color,   $warn-color-rev);
+@include button(danger, $danger-color, $danger-color-rev);
