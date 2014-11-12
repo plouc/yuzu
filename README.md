@@ -28,5 +28,6 @@ Running YUZU
 Starts neo4j + node app.
 
 ```
-make start-neo && make start
+make start-neo
+make start
 ```
