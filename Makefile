@@ -11,6 +11,7 @@ help:
 
 install:
 	npm install
+	bower install
 	./bin/install-neo4j.sh
 
 start-neo:
