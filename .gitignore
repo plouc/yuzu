@@ -3,6 +3,6 @@
 *.log
 node_modules
 neo4j
-public/vendor/*
-public/js/*
-public/css/*
+web/admin/*
+web/frontend/*
+web/src/vendor/*

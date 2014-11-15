@@ -1,8 +1,8 @@
-@import "mixins";
+@import "admin/mixins";
 
-@import "colors";
-@import "fonts";
-@import "sizes";
+@import "admin/colors";
+@import "admin/fonts";
+@import "admin/sizes";
 
 $max-width-desktop: 1120px;
 $max-width-tablet:  740px;
@@ -26,12 +26,12 @@ $max-width-tablet:  740px;
   }
 }
 
-@import "form";
-@import "tables";
-@import "main-nav";
-@import "breadcrumbs";
-@import "buttons";
-@import "page-tree";
+@import "admin/form";
+@import "admin/tables";
+@import "admin/main-nav";
+@import "admin/breadcrumbs";
+@import "admin/buttons";
+@import "admin/page-tree";
 
 
 * {

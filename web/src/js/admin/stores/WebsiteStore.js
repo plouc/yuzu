@@ -27,7 +27,7 @@ var WebsiteStore = {
 
     delete: function (id) {
         return $.ajax({
-            url:  'http://localhost:3000/api/websites/' + id,
+            url:  '/api/websites/' + id,
             type: 'DELETE'
         })
         .then(function (data) {
@@ -37,7 +37,7 @@ var WebsiteStore = {
 
     create: function (data) {
         return $.ajax({
-            url:  'http://localhost:3000/api/websites',
+            url:  '/api/websites',
             data: data,
             type: 'POST'
         });
@@ -45,7 +45,7 @@ var WebsiteStore = {
 
     fetchWebsites: function (params) {
         $.ajax({
-            url:  'http://localhost:3000/api/websites',
+            url:  '/api/websites',
             data: params || {}
         })
         .then(function (data) {
@@ -56,7 +56,7 @@ var WebsiteStore = {
 
     fetchWebsite: function (id, params) {
         $.ajax({
-            url:  'http://localhost:3000/api/websites/' + id,
+            url:  '/api/websites/' + id,
             data: params || {}
         })
             .then(function (data) {

@@ -27,7 +27,7 @@ var PageStore = {
 
     fetchWebsitePages: function (id, params) {
         $.ajax({
-            url:  'http://localhost:3000/api/websites/' + id + '/pages',
+            url:  '/api/websites/' + id + '/pages',
             data: params || {}
         })
             .then(function (data) {
@@ -39,7 +39,7 @@ var PageStore = {
 
     create: function (data) {
         return $.ajax({
-            url:  'http://localhost:3000/api/pages',
+            url:  '/api/pages',
             data: data,
             type: 'POST'
         })
@@ -50,7 +50,7 @@ var PageStore = {
 
     fetchPages: function (params) {
         $.ajax({
-            url:  'http://localhost:3000/api/pages',
+            url:  '/api/pages',
             data: params || {}
         })
             .then(function (data) {
@@ -62,7 +62,7 @@ var PageStore = {
 
     fetchPage: function (id, params) {
         $.ajax({
-            url:  'http://localhost:3000/api/pages/' + id,
+            url:  '/api/pages/' + id,
             data: params || {}
         })
             .then(function (data) {

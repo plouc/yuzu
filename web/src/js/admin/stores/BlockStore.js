@@ -27,7 +27,7 @@ var BlockStore = {
 
     fetchPageBlocks: function (id, params) {
         $.ajax({
-            url:  'http://localhost:3000/api/pages/' + id + '/blocks',
+            url:  '/api/pages/' + id + '/blocks',
             data: params || {}
         })
             .then(function (data) {
@@ -39,7 +39,7 @@ var BlockStore = {
 
     fetchBlock: function (id, params) {
         $.ajax({
-            url:  'http://localhost:3000/api/blocks/' + id,
+            url:  '/api/blocks/' + id,
             data: params || {}
         })
             .then(function (data) {

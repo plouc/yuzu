@@ -1,10 +1,11 @@
 {
-  "engines" : {
-      "node" : ">=0.11.14"
+  "engines": {
+    "node": ">=0.10.3"
   },
   "dependencies": {
     "bluebird": "^2.3.10",
     "debug": "^2.1.0",
+    "jquery": "^2.1.1",
     "koa": "^0.13.0",
     "koa-bodyparser": "^1.1.0",
     "koa-compose": "^2.3.0",
@@ -19,14 +20,19 @@
     "neo4j": "^1.1.1",
     "nunjucks": "^1.1.0",
     "react": "^0.12.0",
+    "react-tools": "*",
     "superagent": "^0.20.0"
   },
   "devDependencies": {
     "browserify": "^6.2.0",
     "gulp": "^3.8.9",
+    "gulp-concat": "^2.4.1",
+    "gulp-cssmin": "^0.1.6",
     "gulp-notify": "^2.0.0",
+    "gulp-rename": "^1.2.0",
     "gulp-ruby-sass": "^0.7.1",
     "gulp-styledocco": "0.0.1",
+    "jest-cli": "^0.1.18",
     "react-router": "^0.10.2",
     "reactify": "^0.15.2",
     "vinyl-source-stream": "^1.0.0"
