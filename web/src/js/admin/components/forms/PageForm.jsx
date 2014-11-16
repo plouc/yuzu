@@ -1,7 +1,7 @@
 var React                   = require('react/addons');
 var ReactCSSTransitionGroup = React.addons.CSSTransitionGroup;
 var Router                  = require('react-router');
-var PageStore               = require('./../../stores/PageStore');
+var PageStore               = require('./../../../core/stores/PageStore');
 var $                       = require('jquery');
 
 var PageForm = React.createClass({

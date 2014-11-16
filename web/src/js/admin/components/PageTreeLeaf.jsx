@@ -46,7 +46,6 @@ var PageTreeLeaf = React.createClass({
     },
 
     _onToggleClick: function () {
-        console.log('_onToggleClick');
         this.setState({
             expanded: !this.state.expanded
         });

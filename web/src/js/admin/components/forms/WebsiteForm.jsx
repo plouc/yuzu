@@ -1,7 +1,7 @@
 var React                   = require('react/addons');
 var ReactCSSTransitionGroup = React.addons.CSSTransitionGroup;
 var Router                  = require('react-router');
-var WebsiteStore            = require('./../../stores/WebsiteStore');
+var WebsiteStore            = require('./../../../core/stores/WebsiteStore');
 var $                       = require('jquery');
 
 var WebsiteForm = React.createClass({

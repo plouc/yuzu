@@ -1,41 +1,30 @@
 var React        = require('react/addons');
 var $            = require('jquery');
 var Link         = require('react-router').Link;
-var WebsiteStore = require('./../../stores/WebsiteStore');
-var PageStore    = require('./../../stores/PageStore');
-var BlockStore   = require('./../../stores/BlockStore');
+var Reflux       = require('reflux');
+
+var PageActions  = require('./../../../core/actions/PageActions');
+var BlockActions = require('./../../../core/actions/BlockActions');
+
+var PageStore    = require('./../../../core/stores/PageStore');
+var BlocksStore  = require('./../../../core/stores/BlocksStore');
 
 module.exports = React.createClass({
+    mixins: [Reflux.ListenerMixin],
+
     getInitialState: function () {
         return {
             page:    null,
             blocks:  []
         };
     },
-    handlePageChange: function () {
-        this.setState({
-            page: PageStore.getCurrentPage()
-        });
-    },
-
-    handleBlocksChange: function () {
-        this.setState({
-            page: BlockStore.getBlocks()
-        });
-    },
 
     componentWillMount: function () {
-        PageStore.addChangeListener(this.handlePageChange);
-        PageStore.fetchPage(this.props.params.id);
+        this.listenTo(PageStore,   this._onPageChange);
+        this.listenTo(BlocksStore, this._onBlocksChange);
 
-        BlockStore.addChangeListener(this.handleBlocksChange);
-        BlockStore.fetchPageBlocks(this.props.params.id);
-    },
-
-    componentWillUnmount: function () {
-        WebsiteStore.removeChangeListener(this.handleWebsiteChange);
-        PageStore.removeChangeListener(this.handlePageChange);
-        BlockStore.removeChangeListener(this.handleBlocksChange);
+        PageActions.get(this.props.params.id);
+        BlockActions.byPage(this.props.params.id);
     },
 
     render: function () {
@@ -43,14 +32,12 @@ module.exports = React.createClass({
             return (<div></div>);
         }
 
-        console.log(this.state.blocks);
-
         var blockNodes = this.state.blocks.map(function (block) {
+            //<Link to="page_block" params={{pageId: this.state.page.id, id: block.id}}>#{block.id}</Link>
+
             return (
-                <tr key={block.id}>
+                <tr>
                     <td>
-                        <Link to="page_block"
-                              params={{pageId: this.state.page.id, id: block.id}}>#{block.id}</Link>
                     </td>
                     <td>{block.name}</td>
                     <td>{block.type}</td>
@@ -83,5 +70,18 @@ module.exports = React.createClass({
                 </div>
             </div>
         );
+    },
+
+
+    _onPageChange: function (page) {
+        this.setState({
+            page: page
+        });
+    },
+
+    _onBlocksChange: function (blocks) {
+        this.setState({
+            blocks: blocks
+        });
     }
 });

@@ -1,12 +1,20 @@
-var React        = require('react/addons');
-var Link         = require('react-router').Link;
-var WebsiteStore = require('./../../stores/WebsiteStore');
-var PageStore    = require('./../../stores/PageStore');
-var PageTree     = require('./../PageTree.jsx');
-var $            = require('jquery');
-var PageForm     = require('./../forms/PageForm.jsx');
+var React          = require('react/addons');
+var Link           = require('react-router').Link;
+var Reflux         = require('reflux');
+var $              = require('jquery');
+
+var WebsiteActions = require('./../../../core/actions/WebsiteActions');
+var PageActions    = require('./../../../core/actions/PageActions');
+
+var WebsiteStore   = require('./../../../core/stores/WebsiteStore');
+var PagesStore     = require('./../../../core/stores/PagesStore');
+
+var PageTree       = require('./../PageTree.jsx');
+var PageForm       = require('./../forms/PageForm.jsx');
 
 var Website = React.createClass({
+    mixins: [Reflux.ListenerMixin],
+
     getInitialState: function () {
         return {
             creating: false,
@@ -17,16 +25,11 @@ var Website = React.createClass({
     },
 
     componentWillMount: function () {
-        WebsiteStore.addChangeListener(this._onWebsiteChange);
-        WebsiteStore.fetchWebsite(this.props.params.id);
+        this.listenTo(WebsiteStore, this._onWebsiteChange);
+        this.listenTo(PagesStore,   this._onPagesChange);
 
-        PageStore.addChangeListener(this._onPagesChange);
-        PageStore.fetchWebsitePages(this.props.params.id);
-    },
-
-    componentWillUnmount: function () {
-        WebsiteStore.removeChangeListener(this._onWebsiteChange);
-        PageStore.removeChangeListener(this._onPagesChange);
+        WebsiteActions.get(this.props.params.id);
+        PageActions.byWebsite(this.props.params.id);
     },
 
     render: function () {
@@ -69,19 +72,16 @@ var Website = React.createClass({
         );
     },
 
-    /**
-     * PRIVATE
-     */
 
-    _onWebsiteChange: function () {
+    _onWebsiteChange: function (website) {
         this.setState({
-            website: WebsiteStore.getCurrentWebsite()
+            website: website
         });
     },
 
-    _onPagesChange: function () {
+    _onPagesChange: function (pages) {
         this.setState({
-            pages: PageStore.getPages()
+            pages: pages
         });
     },
 

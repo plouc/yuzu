@@ -1,28 +1,24 @@
-var React     = require('react/addons');
-var Link      = require('react-router').Link;
-var PageStore = require('./../../stores/PageStore');
-var PageList  = require('./../PageList.jsx');
+var React       = require('react/addons');
+var Link        = require('react-router').Link;
+var Reflux      = require('reflux');
+
+var PageActions = require('./../../../core/actions/PageActions');
+var PagesStore  = require('./../../../core/stores/PagesStore');
+var PageList    = require('./../PageList.jsx');
 
 module.exports = React.createClass({
+    mixins: [Reflux.ListenerMixin],
+
     getInitialState: function () {
         return {
             pages: []
         };
     },
 
-    handlePagesChange: function () {
-        this.setState({
-            pages: PageStore.getPages()
-        });
-    },
-
     componentDidMount: function () {
-        PageStore.addChangeListener(this.handlePagesChange);
-        PageStore.fetchPages();
-    },
+        this.listenTo(PagesStore, this._onPagesChange);
 
-    componentWillUnmount: function () {
-        PageStore.removeChangeListener(this.handlePagesChange);
+        PageActions.all();
     },
 
     render: function () {
@@ -45,5 +41,12 @@ module.exports = React.createClass({
                 </div>
             </div>
         );
+    },
+
+
+    _onPagesChange: function (pages) {
+        this.setState({
+            pages: pages
+        });
     }
 });

@@ -1,9 +1,9 @@
 var React        = require('react/addons');
 var $            = require('jquery');
 var Link         = require('react-router').Link;
-var WebsiteStore = require('./../../stores/WebsiteStore');
-var PageStore    = require('./../../stores/PageStore');
-var BlockStore   = require('./../../stores/BlockStore');
+var WebsiteStore = require('./../../../core/stores/WebsiteStore');
+var PageStore    = require('./../../../core/stores/PageStore');
+var BlockStore   = require('./../../../core/stores/BlockStore');
 
 module.exports = React.createClass({
     getInitialState: function () {

@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>{{ website.name }}</title>
+    <link rel="stylesheet" href="css/yuzu.frontend.css">
+  </head>
+  <body>
+    <div id="page">
+    </div>
+    <script>
+        var appConfig = {
+            websiteId: {{ website.id }},
+            urls:      {{ urls|raw|json }}
+        };
+    </script>
+    <script src="js/yuzu.frontend.js"></script>
+  </body>
+</html>

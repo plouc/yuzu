@@ -1,8 +1,11 @@
-var React        = require('react/addons');
-var $            = require('jquery');
-var Link         = require('react-router').Link;
-var WebsiteStore = require('./../../stores/WebsiteStore');
-var WebsiteForm  = require('./../forms/WebsiteForm.jsx');
+var React          = require('react/addons');
+var Reflux         = require('reflux');
+var $              = require('jquery');
+var Link           = require('react-router').Link;
+
+var WebsiteActions = require('./../../../core/actions/WebsiteActions');
+var WebsitesStore  = require('./../../../core/stores/WebsitesStore');
+var WebsiteForm    = require('./../forms/WebsiteForm.jsx');
 
 var WebsiteRow = React.createClass({
     render: function () {
@@ -20,16 +23,14 @@ var WebsiteRow = React.createClass({
         );
     },
 
-    /**
-     * PRIVATE
-     */
-
     _onClick: function () {
-        WebsiteStore.delete(this.props.website.id);
-    },
+        WebsiteActions.delete(this.props.website.id);
+    }
 });
 
 var Websites = React.createClass({
+    mixins: [Reflux.ListenerMixin],
+
     getInitialState: function () {
         return {
             creating: false,
@@ -37,9 +38,9 @@ var Websites = React.createClass({
         };
     },
 
-    handleWebsitesChange: function () {
+    _onWebsitesChange: function (websites) {
         this.setState({
-            websites: WebsiteStore.getWebsites()
+            websites: websites
         });
     },
 
@@ -56,12 +57,9 @@ var Websites = React.createClass({
     },
 
     componentDidMount: function () {
-        WebsiteStore.addChangeListener(this.handleWebsitesChange);
-        WebsiteStore.fetchWebsites();
-    },
+        this.listenTo(WebsitesStore, this._onWebsitesChange);
 
-    componentWillUnmount: function () {
-        WebsiteStore.removeChangeListener(this.handleWebsitesChange);
+        WebsiteActions.all();
     },
 
     render: function () {
@@ -116,10 +114,7 @@ var Websites = React.createClass({
     },
 
     _onFormSubmit: function (data) {
-        WebsiteStore.create(data).then(function () {
-            console.log('Website created');
-            WebsiteStore.fetchWebsites();
-        }.bind(this));
+        WebsiteActions.create(data);
     }
 });
 
