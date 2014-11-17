@@ -28,17 +28,19 @@ var WebsiteStore = Reflux.createStore({
         })
             .then(function () {
                 this.trigger(true);
+                WebsiteActions.all();
             }.bind(this))
         ;
     },
 
-    deleteWebsite: function (params) {
+    deleteWebsite: function (id) {
         $.ajax({
             url:  '/api/websites/' + id,
             type: 'DELETE'
         })
             .then(function (data) {
                 this.trigger(true);
+                WebsiteActions.all();
             }.bind(this))
         ;
     }

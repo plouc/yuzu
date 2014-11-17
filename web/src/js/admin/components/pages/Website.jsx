@@ -113,12 +113,10 @@ var Website = React.createClass({
             data.websiteId = this.state.website.id;
         }
 
-        PageStore.create(data).then(function () {
-            PageStore.fetchWebsitePages(this.props.params.id);
-            this.setState({
-                creating: false
-            });
-        }.bind(this));
+        PageActions.create(data);
+        this.setState({
+            creating: false
+        });
     }
 });
 

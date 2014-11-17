@@ -37,8 +37,7 @@ module.exports = React.createClass({
 
             return (
                 <tr>
-                    <td>
-                    </td>
+                    <td>{block.id}</td>
                     <td>{block.name}</td>
                     <td>{block.type}</td>
                 </tr>
@@ -62,6 +61,14 @@ module.exports = React.createClass({
                     <div className="page-container__wrapper">
                         <h3>Blocks</h3>
                         <table className="table">
+                            <thead>
+                                <tr>
+                                    <th>id</th>
+                                    <th>name</th>
+                                    <th>type</th>
+                                    <th></th>
+                                </tr>
+                            </thead>
                             <tbody>
                                 {blockNodes}
                             </tbody>

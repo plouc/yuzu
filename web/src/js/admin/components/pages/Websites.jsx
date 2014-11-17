@@ -115,6 +115,9 @@ var Websites = React.createClass({
 
     _onFormSubmit: function (data) {
         WebsiteActions.create(data);
+        this.setState({
+            creating: false
+        });
     }
 });
 

@@ -5,7 +5,7 @@ var PageListRow = require('./PageListRow.jsx');
 var PageList = React.createClass({
     render: function () {
         var pageRows = this.props.pages.map(function (page) {
-            return <PageListRow page={page} />
+            return <PageListRow key={page.id} page={page} />
         }.bind(this));
 
         return <table className="table">
